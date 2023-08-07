@@ -44,20 +44,56 @@ const crearNoticia = async (req, res) => {
             msg: "Noticia agregada"
 
         });
-        } catch (error) {
-            console.log(error)
-            return res.status(500).json({
-                ok: false,
-                msg: "error, contacta con el admin"
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            ok: false,
+            msg: "error, contacta con el admin"
+
+        });
+
+    };
+}
+
+//BORRAR NOTICIA
+
+const borrarNoticia = async (req, res) => {
+
+    const id = await req.params.id;
+    try {
+        const existe = await Noticia.findByIdAndDelete(id);
+
+        if (existe) {
+            return res.status(200).json({
+
+                ok: true,
+                data: existe,
+                msg: "noticia eliminada"
+            })
+        } else {
+            return res.status(400).jason({
+                msg: "La noticia que buscas no existe"
 
             });
 
         };
-    }
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            ok: false,
+            msg: "contacta con los admin"
+        });
+
+    };
+
+}
+
 
 
 module.exports = {
-        obtenerNoticias,
-        crearNoticia
+    obtenerNoticias,
+    crearNoticia,
+    borrarNoticia,
 
-    };
+};
