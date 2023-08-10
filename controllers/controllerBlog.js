@@ -70,7 +70,7 @@ const crearNoticia = async (req, res) => {
         const noticiaGuardada = await noticia.save()
         return res.status(201).json({
             ok: true,
-            pelicula: noticiaGuardada,
+            noticia: noticiaGuardada,
             msg: "Noticia agregada"
 
         });

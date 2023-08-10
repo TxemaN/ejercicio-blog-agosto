@@ -11,6 +11,11 @@ type: String,
 require: true,
 
 },
+imagen: {
+    type: String,
+    require: true,
+    
+    },
 
 fecha: {
     type: Date,
