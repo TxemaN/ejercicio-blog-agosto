@@ -11,9 +11,9 @@ type: String,
 require: true,
 
 },
-imagen: {
-    type: String,
-    require: true,
+foto: {
+    data: Buffer,
+    contentType: String
     
     },
 

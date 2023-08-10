@@ -30,11 +30,38 @@ app.use(express.json())
 //RUTAS
 app.use("/api/v1/blog", require("./routes/backRoutes"))
 
-app.post('/imagen', upload.single('foto'), function (req, res) {
-    // req.file is the name of your file in the form above, here 'uploaded_file'
-    // req.body will hold the text fields, if there were any 
-    console.log(req.file, req.body)
- });
+
+//PARA LAS FOTOS
+app.post("/foto", upload.single("myImage"), (req, res) => {
+    const obj = {
+      img: {
+        data: fs.readFileSync(
+          path.join(__dirname + "/uploads/" + req.file.filename)
+        ),
+        contentType: "image/png",
+      },
+    };
+    const newImage = new ImageModel({
+      image: obj.img,
+    });
+    newImage.save((err) => {
+      err ? console.log(err) : res.redirect("/");
+    });
+  });
+
+
+
+  app.get("/", (req, res) => {
+    ImageModel.find({}, (err, images) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send("An error occurred", err);
+      } else {
+        res.render("index", { images: images });
+      }
+    });
+  });
+
 
 //ESCUCHA SERVIDOR
 app.listen(port, ()=>{
