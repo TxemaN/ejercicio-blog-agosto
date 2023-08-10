@@ -5,7 +5,7 @@ const {obtenerNoticias, buscarNoticia, crearNoticia, borrarNoticia, actualizarNo
 router.get('/', obtenerNoticias)
 
 //BUSCAR NOTICIA POR NOMBRE
-router.get("/:id", buscarNoticia)
+router.get("/:titulo", buscarNoticia)
 
 //CREAR NOTICIA
 router.post("/", crearNoticia)
