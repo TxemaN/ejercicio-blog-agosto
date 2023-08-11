@@ -12,7 +12,7 @@ router.post("/", crearNoticia)
 
 //EDITAR NOTICIA
 
-router.put("/actualizar/:id", actualizarNoticia)
+router.put("/:id", actualizarNoticia)
 
 //BORRAR NOTICIA
 
