@@ -12,16 +12,7 @@ require: true,
 
 },
 foto: {
-    src: {
-        type: String,
-       
-
-    },
-    alt: {
-        type: String,
-        
-
-    }
+    type: String,
 
 },
 

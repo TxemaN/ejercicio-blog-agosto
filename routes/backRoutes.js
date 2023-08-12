@@ -18,4 +18,24 @@ router.put("/:id", actualizarNoticia)
 
 router.delete("/:id", borrarNoticia)
 
+//PARA LAS FOTOS
+app.post("/foto", upload.single("myImage"), (req, res) => {
+    const obj = {
+      img: {
+        data: fs.readFileSync(
+          path.join(__dirname + "/uploads/" + req.file.filename)
+        ),
+        contentType: "image/png",
+      },
+    };
+    const newImage = new ImageModel({
+      image: obj.img,
+    });
+    newImage.save((err) => {
+      err ? console.log(err) : res.redirect("/");
+    });
+  });
+
+
+
 module.exports = router
