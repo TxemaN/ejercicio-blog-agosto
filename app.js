@@ -52,7 +52,7 @@ app.post("/foto", upload.single("myImage"), (req, res) => {
 
 
   app.get("/", (req, res) => {
-    ImageModel.find({}, (err, images) => {
+    BlogModel.find({}, (err, images) => {
       if (err) {
         console.log(err);
         res.status(500).send("An error occurred", err);

@@ -1,5 +1,6 @@
 const Noticia = require("../models/BlogModel");
 
+
 //RECOGER TODAS LAS NOTICIAS
 
 const obtenerNoticias = async (req, res) => {

@@ -12,10 +12,18 @@ require: true,
 
 },
 foto: {
-    data: Buffer,
-    contentType: String
-    
+    src: {
+        type: String,
+       
+
     },
+    alt: {
+        type: String,
+        
+
+    }
+
+},
 
 fecha: {
     type: Date,
