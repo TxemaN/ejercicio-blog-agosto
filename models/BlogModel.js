@@ -13,8 +13,7 @@ require: true,
 },
 foto: {
     type: String,
-    data: Buffer,
-    contentType: String
+  
     
     },
 
