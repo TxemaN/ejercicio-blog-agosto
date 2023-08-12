@@ -31,36 +31,7 @@ app.use(express.json())
 app.use("/api/v1/blog", require("./routes/backRoutes"))
 
 
-//PARA LAS FOTOS
-app.post("/foto", upload.single("myImage"), (req, res) => {
-    const obj = {
-      img: {
-        data: fs.readFileSync(
-          path.join(__dirname + "/uploads/" + req.file.filename)
-        ),
-        contentType: "image/png",
-      },
-    };
-    const newImage = new ImageModel({
-      image: obj.img,
-    });
-    newImage.save((err) => {
-      err ? console.log(err) : res.redirect("/");
-    });
-  });
 
-
-
-  app.get("/", (req, res) => {
-    BlogModel.find({}, (err, images) => {
-      if (err) {
-        console.log(err);
-        res.status(500).send("An error occurred", err);
-      } else {
-        res.render("index", { images: images });
-      }
-    });
-  });
 
 
 //ESCUCHA SERVIDOR
