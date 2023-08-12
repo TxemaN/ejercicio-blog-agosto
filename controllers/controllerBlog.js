@@ -60,7 +60,14 @@ const crearNoticia = async (req, res) => {
     const noticia = new Noticia(req.body);
 
     try {
-        
+        const { titulo } = noticia;
+        const existe = await Noticia.findOne({ titulo: titulo })
+        if (existe) {
+            return res.status(400).json({
+                ok: false,
+                msg: "esa noticia ya fue publicada",
+            });
+        };
         const noticiaGuardada = await noticia.save()
         return res.status(201).json({
             ok: true,
