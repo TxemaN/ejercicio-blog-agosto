@@ -12,9 +12,10 @@ require: true,
 
 },
 foto: {
-    type: String,
-
-},
+    data: Buffer,
+    contentType: String
+    
+    },
 
 fecha: {
     type: Date,
