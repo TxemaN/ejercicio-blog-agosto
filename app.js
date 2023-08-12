@@ -4,7 +4,7 @@ const cors = require ('cors')
 require('dotenv').config();
 
 const multer  = require('multer')
-const upload = multer({ dest: './public/data/uploads/' })
+const upload = multer({ dest: 'uploads/' })
 
 //SERVIDOR
 
@@ -31,6 +31,7 @@ app.use(express.json())
 app.use("/api/v1/blog", require("./routes/backRoutes"))
 
 
+//PARA LAS FOTOS
 
 
 
