@@ -11,7 +11,7 @@ type: String,
 require: true,
 
 },
-foto: {
+imagen: {
     type: String,
   
     
