@@ -13,6 +13,7 @@ require: true,
 },
 imagen: {
     type: String,
+require: true,
   
     
     },
