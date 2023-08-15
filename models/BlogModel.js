@@ -13,18 +13,19 @@ const blogSchema = new Schema({
 
     },
     imagen: {
-        type: Buffer,
-        data: String
-
-        
-
+        type: String,
 
     },
 
     fecha: {
         type: Date,
         default: Date.now
-    }
+    },
+    creador: {
+        type: String,
+        require: true
+
+    },
 
 
 

@@ -3,8 +3,7 @@ const {dbConnect} = require("./helpers/connection")
 const cors = require ('cors')
 require('dotenv').config();
 
-const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
+
 
 //SERVIDOR
 
