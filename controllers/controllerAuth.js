@@ -1,0 +1,133 @@
+const Editor = require('../models/EditorBlog');
+const bcrypt = require('bcryptjs');
+const { generarJWT } = require('../helpers/jwt');
+
+
+
+//GET VER TODOS LOS EDITORES
+const obtenerEditores = async (req, res) => {
+
+    try {
+        const editores = await Editor.find();
+        return res.status(200).json({
+            ok: true,
+            msg: "lista de editores",
+            data: editores
+
+        });
+
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            ok: false,
+            msg: "error, contacta con el admin"
+
+        });
+
+    };
+}
+
+
+//POST CREAR USER
+const createUser = async (req, res) => {
+
+    const { email, password, passConfirm, nombre, role, date } = req.body;
+
+    try {
+        let user = await Editor.findOne({ email: email });
+
+        if (user) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'Ya existe usuario'
+            });
+        };
+
+        if (password != passConfirm) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'La contraseña no coincide'
+            })
+        };
+
+        const newUser = { email, nombre, password, role, date };
+        user = new Editor(newUser)
+
+        const salt = bcrypt.genSaltSync();
+        user.password = bcrypt.hashSync(password, salt);
+
+        const saveUser = await user.save();
+
+        return res.status(201).json({
+            ok: true,
+            data: saveUser,
+            msg: "Editor guardado"
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            ok: false,
+            msg: 'Consulta con el admin Navarro'
+        });
+    };
+};
+
+//POST LOGIN USER
+const loginUser = async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        let user = await Editor.findOne({ email: email });
+
+        if (!user) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'Ese usuario no existe'
+            });
+        };
+        let passOk = await bcrypt.compare(password, user.password)
+
+        if (!passOk) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'La contraseña no coincide'
+            });
+        };
+        const token = await generarJWT(user.id, user.nombre);
+        res.status(200).json({
+            ok: true,
+            uid: user.id,
+            nombre: user.nombre,
+            email: user.email,
+            token
+        });
+    } catch (error) {
+        res.status(500).json({
+            ok: false,
+            msg: 'Consulta con los administradores'
+        });
+    };
+};
+
+//RENEW
+const renewToken = async (req, res) => {
+    const { uid, nombre } = req
+   
+    const token = await generarJWT(uid, nombre);
+
+    res.status(200).json({
+        ok: true,
+        msg: "token renovado",
+        user: {
+            uid,
+            nombre
+        }, token
+    });
+};
+
+module.exports = {
+    createUser,
+    loginUser,
+    renewToken,
+    obtenerEditores
+}

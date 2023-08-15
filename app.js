@@ -28,6 +28,7 @@ app.use(express.json())
 
 //RUTAS
 app.use("/api/v1/blog", require("./routes/backRoutes"))
+app.use("/api/v1/auth", require("./routes/authRoutes"));
 
 
 //PARA LAS FOTOS
