@@ -27,6 +27,39 @@ const obtenerEditores = async (req, res) => {
     };
 }
 
+//BORRAR EDITOR
+const borrarEditor = async (req, res) => {
+
+    const id = await req.params.id;
+    try {
+        const existe = await Editor.findByIdAndDelete(id);
+
+        if (existe) {
+            return res.status(200).json({
+
+                ok: true,
+                data: existe,
+                msg: "editor eliminado"
+            })
+        } else {
+            return res.status(400).jason({
+                msg: "El editor que buscas no existe"
+
+            });
+
+        };
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            ok: false,
+            msg: "contacta con los admin"
+        });
+
+    };
+
+}
+
 
 //POST CREAR USER
 const createUser = async (req, res) => {
@@ -129,5 +162,6 @@ module.exports = {
     createUser,
     loginUser,
     renewToken,
-    obtenerEditores
+    obtenerEditores,
+    borrarEditor
 }

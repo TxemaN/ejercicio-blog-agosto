@@ -1,6 +1,6 @@
 const express = require("express")
 const { check } = require('express-validator');
-const { createUser, loginUser, renewToken, obtenerEditores } = require('../controllers/controllerAuth')
+const { createUser, loginUser, renewToken, obtenerEditores, borrarEditor } = require('../controllers/controllerAuth')
 const { validarEx } = require('../middleware/validation');
 const { validarJWT } = require('../middleware/validatorJWT');
 const router = express.Router();
@@ -31,6 +31,11 @@ router.post('/login',
 
 //RENEW TOKEL
 router.get('/renew', validarJWT, renewToken)
+
+//BORRAR EDITOR
+//BORRAR NOTICIA
+
+router.delete("/:id", borrarEditor)
 
 
 module.exports = router
