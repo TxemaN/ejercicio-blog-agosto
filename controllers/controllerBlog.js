@@ -52,6 +52,32 @@ try {
 
 }
 
+//REOGER NOTICIAS POR CREADOR
+const buscarNoticiasCreador = async(req, res) => {
+    const creador=await req.params.creador;
+    
+    try {
+        const existe = await Noticia.find({creador:creador});
+    
+        if (existe) {
+            return res.status(200).json({
+                ok:true,
+                data:existe
+            })
+        }else {
+            return res.status(400).json({
+                msg: "no hay noticias con ese creador"
+            })
+        }
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            ok:false,
+            msg:"contacta con los admin"
+        })
+    }
+    
+    }
 
 
 //CREAR NOTICIA
@@ -86,6 +112,8 @@ const crearNoticia = async (req, res) => {
     };
 }
 
+
+//
 // ACTUALIZAR NOTICIA
 
 const actualizarNoticia = async (req, res) => {
@@ -156,5 +184,6 @@ module.exports = {
     buscarNoticia,
     crearNoticia,
     borrarNoticia,
-    actualizarNoticia
+    actualizarNoticia,
+    buscarNoticiasCreador
 };
