@@ -3,12 +3,16 @@ const {dbConnect} = require("./helpers/connection")
 const cors = require ('cors')
 require('dotenv').config();
 
+const cookieParser = require('cookie-parser');
+
 
 
 //SERVIDOR
 
 const app=express();
 
+//COOKIES
+app.use(cookieParser());
 //PUERTO
 const port = process.env.port || 3000
 
@@ -29,6 +33,7 @@ app.use(express.json())
 //RUTAS
 app.use("/api/v1/blog", require("./routes/backRoutes"))
 app.use("/api/v1/auth", require("./routes/authRoutes"));
+
 
 
 //PARA LAS FOTOS

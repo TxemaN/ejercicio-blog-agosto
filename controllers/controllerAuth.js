@@ -2,7 +2,24 @@ const Editor = require('../models/EditorBlog');
 const bcrypt = require('bcryptjs');
 const { generarJWT } = require('../helpers/jwt');
 
+const panelUsuario = async (req, res) => {
 
+    try {
+        const editor = await Editor.find();
+        if (!editor) {
+            return res.json({ message: 'Ese editor no existe' })
+        }
+        return res.json({ editor: editor })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            ok: false,
+            msg: "error, contacta con el admin"
+
+        });
+
+    };
+}
 
 //GET VER TODOS LOS EDITORES
 const obtenerEditores = async (req, res) => {
@@ -100,13 +117,13 @@ const createUser = async (req, res) => {
     } catch (error) {
         res.status(500).json({
             ok: false,
-            msg: 'Consulta con el admin Navarro'
+            msg: 'Consulta con los administradores'
         });
     };
 };
 
 //POST LOGIN USER
-const loginUser = async (req, res) => {
+const loginUser = async (req, res,) => {
     const { email, password } = req.body;
 
     try {
@@ -133,7 +150,8 @@ const loginUser = async (req, res) => {
             nombre: user.nombre,
             email: user.email,
             token
-        });
+        })
+        
     } catch (error) {
         res.status(500).json({
             ok: false,
@@ -145,7 +163,7 @@ const loginUser = async (req, res) => {
 //RENEW
 const renewToken = async (req, res) => {
     const { uid, nombre } = req
-   
+
     const token = await generarJWT(uid, nombre);
 
     res.status(200).json({
@@ -158,10 +176,16 @@ const renewToken = async (req, res) => {
     });
 };
 
+
+//PANEL USUARIO
+
+
+
 module.exports = {
     createUser,
     loginUser,
     renewToken,
     obtenerEditores,
-    borrarEditor
+    borrarEditor,
+    panelUsuario
 }

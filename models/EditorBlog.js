@@ -22,6 +22,9 @@ const editorSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    token:{
+        type:String
+    }
     
 });
 
