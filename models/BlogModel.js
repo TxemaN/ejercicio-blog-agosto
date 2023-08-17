@@ -26,7 +26,11 @@ const blogSchema = new Schema({
         require: true
 
     },
+    nombrecreador: {
+        type: String,
+        require: true
 
+    }
 
 
 

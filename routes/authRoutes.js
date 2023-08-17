@@ -7,13 +7,13 @@ const router = express.Router();
 //OBTENER DITORES
 router.get("/", obtenerEditores)
 //Ruta panel usuario
-router.get("/user", panelUsuario)
+
 
 //POST REGISTER
 router.post('/register',
     [
-        check('email', 'Email obligatório').isEmail(),
-        check('nombre', 'Nombre obligatório').not().isEmpty(),
+        check('email', 'Email obligatorio').isEmail(),
+        check('nombre', 'Nombre obligatorio').not().isEmpty(),
         check('password').notEmpty().withMessage('Contraseña obligatòria').isLength({ min: 6 }).withMessage('minimo 6 caracteres').matches(/^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]+$/).withMessage('La contraseña debe contener pelo menos 1 mayuscula y 1 numero'),
         check('passConfirm').not().isEmpty(),
         validarEx
@@ -24,14 +24,14 @@ router.post('/register',
 //POST LOGIN
 router.post('/login',
     [
-        check('email', 'Email obligatório').isEmail(),
-        check('password', 'Password obligatório').not().isEmpty(),
+        check('email', 'Email obligatorio').isEmail(),
+        check('password', 'Password obligatorio').not().isEmpty(),
         validarEx
     ],
     loginUser);
 
 
-//RENEW TOKEL
+//RENEW TOKEN
 router.get('/renew', validarJWT, renewToken)
 
 //BORRAR EDITOR

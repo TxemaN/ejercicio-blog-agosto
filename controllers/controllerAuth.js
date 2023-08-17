@@ -149,6 +149,7 @@ const loginUser = async (req, res,) => {
             uid: user.id,
             nombre: user.nombre,
             email: user.email,
+            role: user.role,
             token
         })
         
@@ -171,8 +172,9 @@ const renewToken = async (req, res) => {
         msg: "token renovado",
         user: {
             uid,
-            nombre
-        }, token
+            nombre, 
+            token
+        }
     });
 };
 
