@@ -47,16 +47,17 @@ const obtenerEditores = async (req, res) => {
 //OBTENER Editor
 
 const obtenerEditor = async (req, res) => {
-    const id=await req.params.id;
+    const id = await req.params.id;
     try {
-        const editor = await Editor.findOne({id:id});
+        const existe = await Editor.findOne({_id:id});
+        if (existe) {
         return res.status(200).json({
             ok: true,
             msg: "datos editor",
-            data: editor
+            data:existe
 
         });
-
+    }
     } catch (error) {
         console.log(error)
         return res.status(500).json({

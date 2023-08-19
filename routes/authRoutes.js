@@ -35,7 +35,7 @@ router.post('/login',
 router.get('/renew', validarJWT, renewToken)
 
 //ENCONTRAR EDITOR POR ID
-router.get("/:id", obtenerEditor)
+router.get("/editorindividual/:id", obtenerEditor)
 
 //BORRAR EDITOR
 router.delete("/:id", borrarEditor)
