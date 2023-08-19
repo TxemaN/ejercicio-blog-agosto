@@ -43,7 +43,30 @@ const obtenerEditores = async (req, res) => {
 
     };
 }
+//
+//OBTENER Editor
 
+const obtenerEditor = async (req, res) => {
+    const id=await req.params.id;
+    try {
+        const editor = await Editor.findOne({id:id});
+        return res.status(200).json({
+            ok: true,
+            msg: "datos editor",
+            data: editor
+
+        });
+
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            ok: false,
+            msg: "error, contacta con el admin"
+
+        });
+
+    };
+}
 //BORRAR EDITOR
 const borrarEditor = async (req, res) => {
 
@@ -189,6 +212,7 @@ module.exports = {
     loginUser,
     renewToken,
     obtenerEditores,
+    obtenerEditor,
     borrarEditor,
     panelUsuario
 }

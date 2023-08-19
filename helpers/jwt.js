@@ -25,7 +25,7 @@ const generarJWT = (uid, nombre, role) => {
                     maxAge: 3600000, // expira en 1 hora
                     
                 });
-                console.log(cookie)
+                
             });
     });
     
