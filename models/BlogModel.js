@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const multer  = require('multer')
+const multer = require('multer')
 const upload = multer({ dest: 'uploads/' })
 const blogSchema = new Schema({
     titulo: {
@@ -12,16 +12,13 @@ const blogSchema = new Schema({
         require: true,
 
     },
-    imagen: {
-        src: {type: String,
-            },
-            alt : {
-                type: String,
-            
-            }
+    imagensrc: {
+        type: String,
 
     },
-
+    imagenalt: {
+        type: String,
+    },
     fecha: {
         type: Date,
         default: Date.now
