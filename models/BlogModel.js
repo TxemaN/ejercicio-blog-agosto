@@ -13,7 +13,12 @@ const blogSchema = new Schema({
 
     },
     imagen: {
-        type: String,
+        src: {type: String,
+            },
+            alt : {
+                type: String,
+            
+            }
 
     },
 
