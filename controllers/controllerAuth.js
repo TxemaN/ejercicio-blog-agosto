@@ -49,15 +49,15 @@ const obtenerEditores = async (req, res) => {
 const obtenerEditor = async (req, res) => {
     const id = await req.params.id;
     try {
-        const existe = await Editor.findOne({_id:id});
+        const existe = await Editor.findOne({ _id: id });
         if (existe) {
-        return res.status(200).json({
-            ok: true,
-            msg: "datos editor",
-            data:existe
+            return res.status(200).json({
+                ok: true,
+                msg: "datos editor",
+                data: existe
 
-        });
-    }
+            });
+        }
     } catch (error) {
         console.log(error)
         return res.status(500).json({
@@ -167,17 +167,17 @@ const loginUser = async (req, res,) => {
                 msg: 'La contraseña no coincide'
             });
         };
-       
+        const token = await generarJWT(user.id, user.nombre, user.role);
         res.status(200).json({
             ok: true,
             uid: user.id,
             nombre: user.nombre,
             email: user.email,
             role: user.role,
-           
+            token
         })
-        
-        
+
+
     } catch (error) {
         res.status(500).json({
             ok: false,
