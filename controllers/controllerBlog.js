@@ -54,7 +54,7 @@ try {
 
 //BUSCAR VARIAS NOTICIAS POR NOMBRE
 const buscarNoticias = async(req, res) => {
-    const titulo=await req.params.titulo;
+    const {titulo}=await req.params.titulo;
     
     try {
         const existe = await Noticia.find({titulo:titulo});

@@ -1,6 +1,7 @@
 const express = require("express")
 const {dbConnect} = require("./helpers/connection")
-const cors = require ('cors')
+const cors = require('cors')
+const fetch = require("node-fetch")
 require('dotenv').config();
 
 const cookieParser = require('cookie-parser');
