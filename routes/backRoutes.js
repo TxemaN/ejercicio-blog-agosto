@@ -1,11 +1,14 @@
 const express = require("express")
 const router = express.Router()
-const {obtenerNoticias, buscarNoticia, crearNoticia, borrarNoticia, actualizarNoticia, buscarNoticiasCreador} = require("../controllers/controllerBlog")
+const {obtenerNoticias, buscarNoticia, buscarNoticias, crearNoticia, borrarNoticia, actualizarNoticia, buscarNoticiasCreador} = require("../controllers/controllerBlog")
 //RECOGER TODAS LAS NOTICIAS
 router.get('/', obtenerNoticias)
 
-//BUSCAR NOTICIA POR NOMBRE
+//BUSCAR NOTICIA INDIVIDUAL POR NOMBRE
 router.get("/:titulo", buscarNoticia)
+
+//BUSCAR VARIAS NOTICIAS POR NOMBRE
+router.get("/busqueda/:titulo", buscarNoticias)
 //BUSCAR NOTICIA POR NOMBRE
 router.get("/creadapor/:creador", buscarNoticiasCreador)
 

@@ -52,6 +52,33 @@ try {
 
 }
 
+//BUSCAR VARIAS NOTICIAS POR NOMBRE
+const buscarNoticias = async(req, res) => {
+    const titulo=await req.params.titulo;
+    
+    try {
+        const existe = await Noticia.find({titulo:titulo});
+    
+        if (existe) {
+            return res.status(200).json({
+                ok:true,
+                data:existe
+            })
+        }else {
+            return res.status(400).json({
+                msg: "no hay noticias con ese título"
+            })
+        }
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            ok:false,
+            msg:"contacta con los admin"
+        })
+    }
+    
+    }
+
 //REOGER NOTICIAS POR CREADOR
 const buscarNoticiasCreador = async(req, res) => {
     const creador=await req.params.creador;
@@ -182,6 +209,7 @@ const borrarNoticia = async (req, res) => {
 module.exports = {
     obtenerNoticias,
     buscarNoticia,
+    buscarNoticias,
     crearNoticia,
     borrarNoticia,
     actualizarNoticia,
