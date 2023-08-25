@@ -30,7 +30,7 @@ const buscarNoticia = async(req, res) => {
 const titulo=await req.params.titulo;
 
 try {
-    const existe = await Noticia.find({titulo:titulo});
+    const existe = await Noticia.findOne({titulo:titulo});
 
     if (existe) {
         return res.status(200).json({
