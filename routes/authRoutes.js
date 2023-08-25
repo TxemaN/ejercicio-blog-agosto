@@ -10,7 +10,7 @@ router.get("/", obtenerEditores)
 
 
 //POST REGISTER
-router.get('/register',
+router.post('/register',
     [
         check('email', 'Email obligatorio').isEmail(),
         check('nombre', 'Nombre obligatorio').not().isEmpty(),
@@ -22,7 +22,7 @@ router.get('/register',
 
 
 //POST LOGIN
-router.get('/login',
+router.post('/login',
     [
         check('email', 'Email obligatorio').isEmail(),
         check('password', 'Password obligatorio').not().isEmpty(),
