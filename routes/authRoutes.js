@@ -14,7 +14,7 @@ router.post('/register',
     [
         check('email', 'Email obligatorio').isEmail(),
         check('nombre', 'Nombre obligatorio').not().isEmpty(),
-        check('password').notEmpty().withMessage('Contraseña obligatòria').isLength({ min: 6 }).withMessage('minimo 6 caracteres').matches(/^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]+$/).withMessage('La contraseña debe contener pelo menos 1 mayuscula y 1 numero'),
+        check('password').notEmpty().withMessage('Contraseña obligatoria').isLength({ min: 6 }).withMessage('minimo 6 caracteres').matches(/^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]+$/).withMessage('La contraseña debe contener pelo menos 1 mayuscula y 1 numero'),
         check('passConfirm').not().isEmpty(),
         validarEx
     ],

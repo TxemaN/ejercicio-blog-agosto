@@ -167,21 +167,21 @@ const loginUser = async (req, res,) => {
                 msg: 'La contraseña no coincide'
             });
         };
-        const token = await generarJWT(user.id, user.nombre, user.role);
+       
         res.status(200).json({
             ok: true,
             uid: user.id,
             nombre: user.nombre,
             email: user.email,
             role: user.role,
-            token
+           
         })
         
         
     } catch (error) {
         res.status(500).json({
             ok: false,
-            msg: 'Consulta con los administradores'
+            msg: 'Esto no esta chutando'
         });
     };
 };
