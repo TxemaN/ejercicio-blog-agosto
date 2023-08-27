@@ -23,7 +23,7 @@ https://blog-agosto-front.onrender.com
 
 ## Cuentas acceso
 
--ADMIN: correo: tu@tu.com  contraseña: Tu1234
--EDITOR correo: yo@yo.com  contraseña: Yo1234
--EDITOR correo: el@el.com  contraseña: El1234
+- ADMIN: correo: tu@tu.com  contraseña: Tu1234
+- EDITOR correo: yo@yo.com  contraseña: Yo1234
+- EDITOR correo: el@el.com  contraseña: El1234
 
