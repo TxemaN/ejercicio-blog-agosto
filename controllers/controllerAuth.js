@@ -177,7 +177,7 @@ const loginUser = async (req, res,) => {
             token
             
         })
-        response.cookie(token)
+        response.cookie("miToken", token )
 
 
     } catch (error) {
