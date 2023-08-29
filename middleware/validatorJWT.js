@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 const validarJWT = (req, res, next) => {
 
-    const tok = req.header('x-token');
+    const tok = req.header.authorization;
     
     if (!tok) {
 
@@ -17,7 +17,7 @@ const validarJWT = (req, res, next) => {
         const payload = jwt.verify(tok, process.env.JWT_SECRET);
         req.uid = payload.uid;
         req.nombre = payload.nombre;
-        req.role=payload.role;
+        
        // console.log(req.uid)
     } catch (error) {
         return res.status(401).json({

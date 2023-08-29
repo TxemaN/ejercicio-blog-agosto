@@ -197,9 +197,10 @@ const renewToken = async (req, res) => {
         msg: "token renovado",
         user: {
             uid,
-            nombre,
-            token
-        }
+            nombre
+            
+        },
+        token
     });
 };
 
