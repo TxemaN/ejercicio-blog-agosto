@@ -177,9 +177,9 @@ const loginUser = async (req, res,) => {
             role: user.role,
             token
             
-        }, response.cookie("miToken", token ))
+        }, )
         
-        response.cookie("miToken", token )
+        
 
     } catch (error) {
         res.status(500).json({
