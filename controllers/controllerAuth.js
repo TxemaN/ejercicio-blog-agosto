@@ -148,6 +148,8 @@ const createUser = async (req, res) => {
 
 //POST LOGIN USER
 const loginUser = async (req, res,) => {
+    
+
     const { email, password } = req.body;
 
     try {

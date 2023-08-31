@@ -32,6 +32,11 @@ const blogSchema = new Schema({
         type: String,
         require: true
 
+    },
+    uploaded_file: {
+        data: Buffer,
+        contentType: String
+
     }
 
 
