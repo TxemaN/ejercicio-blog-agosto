@@ -34,8 +34,11 @@ const blogSchema = new Schema({
 
     },
     uploaded_file: {
-        type: String,
-      }
+        data: Buffer,
+        contentType: String,
+        nombreArchivo: String // Campo adicional para el nombre del archivo
+
+    }
 
 
 
