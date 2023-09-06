@@ -12,13 +12,7 @@ const blogSchema = new Schema({
         require: true,
 
     },
-    imagensrc: {
-        type: String,
-
-    },
-    imagenalt: {
-        type: String,
-    },
+    
     fecha: {
         type: Date,
         default: Date.now
@@ -35,9 +29,9 @@ const blogSchema = new Schema({
     },
     uploaded_file: {
         data: Buffer,
-        contentType: String
-
-    }
+        contentType: String,
+        nombreArchivo: String // Campo adicional para el nombre del archivo
+      }
 
 
 
