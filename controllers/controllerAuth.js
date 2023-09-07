@@ -161,7 +161,7 @@ const loginUser = async (req, res,) => {
                 msg: 'Ese usuario no existe'
             });
         };
-        let passOk = await bcrypt.compare(password, user.password)
+        let passOk = await bcrypt.compareSync(password, user.password)
 
         if (!passOk) {
             return res.status(400).json({
@@ -170,17 +170,15 @@ const loginUser = async (req, res,) => {
             });
         };
         const token = await generarJWT(user.id, user.nombre, user.role);
-        res.cookie('miToken', token);
-       return res.status(200).json({
-            ok: true,
-            uid: user.id,
-            nombre: user.nombre,
-            email: user.email,
-            role: user.role,
-            token,
+        res.cookie('miToken', token, {
             
+            httpOnly: true,
+            secure: true, // Somente se o frontend estiver sendo servido por HTTPS
+            sameSite: 'none', // Envia cookei a servidores distintos
+            maxAge: 12 * 60 * 60 * 1000, //12h
             
-        } )
+        } );
+     
         
         
 

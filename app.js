@@ -23,7 +23,10 @@ const port = process.env.port || 3000
 dbConnect()
 
 //CORS
-app.use(cors())
+app.use(cors({
+    origin: "http://localhost:5000",
+    credentials:true,
+}))
 
 //parse application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: false }))
