@@ -8,7 +8,7 @@ router.get('/', obtenerNoticias)
 router.get("/:titulo", buscarNoticia)
 
 //BUSCAR VARIAS NOTICIAS POR NOMBRE
-router.get("/busqueda/:titulo", buscarNoticias)
+router.post("/busqueda/", buscarNoticias)
 //BUSCAR NOTICIA POR NOMBRE
 router.get("/creadapor/:creador", buscarNoticiasCreador)
 

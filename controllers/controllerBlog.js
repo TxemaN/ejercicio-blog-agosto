@@ -54,15 +54,17 @@ try {
 
 //BUSCAR VARIAS NOTICIAS POR NOMBRE
 const buscarNoticias = async(req, res) => {
-    const {titulo}=await req.params.titulo;
-    
+    const { titulo } = req.body
+    const body = {
+        titulo,
+    }
     try {
         const existe = await Noticia.find({titulo:titulo});
     
         if (existe) {
             return res.status(200).json({
                 ok:true,
-                data:existe
+                data:body
             })
         }else {
             return res.status(400).json({
