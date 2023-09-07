@@ -1,3 +1,4 @@
+const { cookie } = require('express-validator');
 const jwt = require('jsonwebtoken');
 
 const generarJWT = (uid, nombre, role) => {
@@ -19,11 +20,15 @@ const generarJWT = (uid, nombre, role) => {
                     reject('Fallo al generar token');
                 };
 
-                resolve(token);console.log(token)
+                resolve(token);
                 // Se escribe la información del token en una cookie y se envía
-               
+                res.cookie('miToken', token, {
+                    httpOnly: true, // la cookie solo es accesible en el servidor
+                    maxAge: 3600000, // expira en 1 hora
+                    
+                });
                 
-                
+                console.log(cookie)
                 
             });
     });

@@ -170,9 +170,14 @@ const loginUser = async (req, res,) => {
             });
         };
         const token = await generarJWT(user.id, user.nombre, user.role);
-        res.cookie('miToken', token,{
-            maxAge: 300000,
-            httpOnly: true,
+        res.cookie('miToken', token);
+       return res.status(200).json({
+            ok: true,
+            uid: user.id,
+            nombre: user.nombre,
+            email: user.email,
+            role: user.role,
+            token,
             
             
         } )
