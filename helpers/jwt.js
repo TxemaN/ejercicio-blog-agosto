@@ -20,7 +20,7 @@ const generarJWT = (uid, nombre, role) => {
                     reject('Fallo al generar token');
                 };
 
-                resolve(token);
+                
                 // Se escribe la información del token en una cookie y se envía
                 res.cookie('miToken', token, {
                     httpOnly: true, // la cookie solo es accesible en el servidor
@@ -28,7 +28,7 @@ const generarJWT = (uid, nombre, role) => {
                     
                 });
                 
-                console.log(cookie)
+                console.log('miToken')
                 
             });
     });
