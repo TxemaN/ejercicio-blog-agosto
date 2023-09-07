@@ -7,6 +7,12 @@ const blogSchema = new Schema({
         require: true,
 
     },
+
+    intronoticia: {
+        type: String,
+        require: true,
+
+    },
     noticia: {
         type: String,
         require: true,
