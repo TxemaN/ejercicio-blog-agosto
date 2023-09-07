@@ -19,11 +19,7 @@ const validarJWT = (req, res, next) => {
         req.nombre = payload.nombre;
         req.role = payload.role;
         // console.log(req.uid)
-        res.cookie('miToken', tok, {
-            httpOnly: true, // la cookie solo es accesible en el servidor
-            maxAge: 3600000, // expira en 1 hora
-
-        });
+        
     } catch (error) {
         return res.status(401).json({
             ok: false,
