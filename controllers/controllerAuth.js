@@ -169,14 +169,10 @@ const loginUser = async (req, res,) => {
                 msg: 'La contraseña no coincide'
             });
         };
-        const token = await generarJWT();
+        const token = await generarJWT(user.id, user.nombre, user.role);
         res.cookie('miToken', token,{
-            ok: true,
-            uid: user.id,
-            nombre: user.nombre,
-            email: user.email,
-            role: user.role,
-            token,
+            maxAge: 300000,
+            httpOnly: true,
             
             
         } )
