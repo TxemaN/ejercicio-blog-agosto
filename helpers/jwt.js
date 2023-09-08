@@ -24,7 +24,7 @@ const generarJWT = (uid, nombre, role) => {
                 // Se escribe la información del token en una cookie y se envía
               
                 
-                console.log('miToken')
+                
                 
             });
     });

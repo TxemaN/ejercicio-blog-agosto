@@ -178,7 +178,7 @@ const loginUser = async (req, res,) => {
 
 
         });
-        console.log(cookie.user.role)
+        
        return res.status(200).json({
             ok: true,
             uid: user.id,
@@ -197,7 +197,7 @@ const loginUser = async (req, res,) => {
             ok: false,
             msg: 'Esto no esta chutando'
         });
-    };
+    };console.log(cookie.user.role)
 };
 
 //RENEW
