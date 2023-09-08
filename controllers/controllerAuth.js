@@ -178,7 +178,7 @@ const loginUser = async (req, res,) => {
 
 
         });
-        console.log(cookie)
+        console.log(cookie.user.role)
        return res.status(200).json({
             ok: true,
             uid: user.id,
@@ -189,7 +189,7 @@ const loginUser = async (req, res,) => {
             
             
         } )
-     
+        
         
 
     } catch (error) {
