@@ -24,7 +24,7 @@ dbConnect()
 
 //CORS
 app.use(cors({
-    origin: "http://localhost:5000",
+    origin: "https://blog-agosto-front.onrender.com",
     credentials:true,
 }))
 
